@@ -15,5 +15,5 @@ server 208.67.220.220:5353 -group GFW
 ![image](https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/example2.png)
 
 ## Source:
-gfwlist: https://github.com/gfwlist/gfwlist \n
+gfwlist: https://github.com/gfwlist/gfwlist  <br/>
 Koolshare: https://github.com/hq450/fancyss
