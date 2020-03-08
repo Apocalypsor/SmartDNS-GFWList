@@ -5,10 +5,10 @@ on:
     branches:
       - master
   schedule:
-    - cron: 0 0 10 * *
+    - cron: 0 8 * * *
 
 jobs:
-  china_ipv4_list:
+  GFWList:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -24,7 +24,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Add changes" -a
+        git commit -m "Update" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
