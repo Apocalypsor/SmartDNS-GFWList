@@ -1,0 +1,31 @@
+name: Push
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: 0 0 10 * *
+
+jobs:
+  china_ipv4_list:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Create local changes
+      run: |
+        curl https://cdn.jsdelivr.net/gh/gfwlist/gfwlist/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.' | sed 's#^\.\+##' | sort -u > /tmp/temp_gfwlist
+        curl https://cdn.jsdelivr.net/gh/hq450/fancys/rules/gfwlist.conf | sed 's/ipset=\/\.//g; s/\/gfwlist//g; /^server/d' > /tmp/temp_koolshare
+        cat /tmp/temp_gfwlist /tmp/temp_koolshare | sort -u > gfw_domain.conf
+        sed -i 's/^/nameserver \//'  gfw_domain.conf
+        sed -i 's/$/\/GFW/'  gfw_domain.conf
+        git add .
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.REPO_TOKEN }}
