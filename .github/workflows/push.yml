@@ -21,11 +21,10 @@ jobs:
         sed -i 's/^/nameserver \//'  gfw_domain.conf
         sed -i 's/$/\/GFW/'  gfw_domain.conf
         git add .
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m "Update" -a
+    - uses: autosuite/autocommit@master
+      with:
+        commit-message: Update.
+        add-options: -A
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
