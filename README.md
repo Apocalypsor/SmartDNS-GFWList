@@ -13,5 +13,5 @@ server 208.67.220.220:5353 -group GFW
 ```
 
 ## Source:
-gfwlist: https://github.com/gfwlist/gfwlist  <br/>
-Koolshare: https://github.com/hq450/fancyss
++ gfwlist: https://github.com/gfwlist/gfwlist
++ Koolshare: https://github.com/hq450/fancyss
