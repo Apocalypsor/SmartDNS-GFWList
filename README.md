@@ -7,7 +7,7 @@ wget https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domai
 
 2. Add it to your smartdns configuration:
 ```
-conf-file /etc/smartdns/gfw_domain.conf
+conf-file /etc/smartdns/smartdns_gfw_domain.conf
 ```
 
 ## Source:
