@@ -1,9 +1,9 @@
 # GFWList for Smartdns
 ## Usage:
 1. Download Conf: 
-'''
+```
 wget https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf -o /etc/smartdns/gfw_domain.conf
-'''
+```
 
 2. Add it to your smartdns configuration:
 ```
