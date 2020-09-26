@@ -11,7 +11,7 @@ jobs:
   Smartdns-GFWList:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Smartdns GFWList
       run: |
         curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.' | sed 's#^\.\+##' | sort -u > /tmp/temp_gfwlist && sed -i 's/^/\./g' /tmp/temp_gfwlist
@@ -27,7 +27,7 @@ jobs:
         curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed 's/ipset=\/\.//g; s/\/gfwlist//g; /^server/d' > /tmp/temp_koolshare
         curl https://raw.githubusercontent.com/Apocalypsor/Smartdns-GFWList/master/extra.conf > /tmp/temp_extra
         cat /tmp/temp_gfwlist /tmp/temp_koolshare /tmp/temp_extra | sort -u | sed 's/^\.//g' > overture_gfw_domain.conf
-    - uses: autosuite/autocommit@master
+    - uses: autosuite/autocommit@main
       with:
         commit-message: Update
         add-options: -A
@@ -40,7 +40,7 @@ jobs:
     name: China IP List
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Create local changes
       run: |
         wget https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt -O /tmp/china_ipv4.list
@@ -49,7 +49,7 @@ jobs:
         echo > /tmp/line
         cat /tmp/china_ipv4.list /tmp/line /tmp/china_ipv6.list > china_ip_list
     - name: Commit files
-      uses: autosuite/autocommit@master
+      uses: autosuite/autocommit@main
       with:
         commit-message: Update
         add-options: -A
