@@ -1,9 +1,11 @@
-name: Push
+name: Update
 
 on:
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/Update.yml
   schedule:
     - cron: 0 0 * * *
 
