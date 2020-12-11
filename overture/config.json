@@ -81,20 +81,20 @@
   "AlternativeDNSConcurrent": false,
   "WhenPrimaryDNSAnswerNoneUse": "PrimaryDNS",
   "IPNetworkFile": {
-    "Primary": "./ip_network_primary",
-    "Alternative": "./ip_network_alternative"
+    "Primary": "/overture/ip_network_primary_sample",
+    "Alternative": "/overture/ip_network_alternative_sample"
   },
   "DomainFile": {
-    "Primary": "./domain_primary",
-    "Alternative": "./domain_alternative",
+    "Primary": "/overture/domain_primary_sample",
+    "Alternative": "/overture/domain_alternative_sample",
     "Matcher":  "full-map"
   },
   "HostsFile": {
-    "HostsFile": "./hosts",
+    "HostsFile": "/overture/hosts_sample",
     "Finder": "full-map"
   },
   "MinimumTTL": 60,
-  "DomainTTLFile" : "./domain_ttl",
+  "DomainTTLFile" : "/overture/domain_ttl_sample",
   "CacheSize" : 4096,
   "RejectQType": [255]
 }
