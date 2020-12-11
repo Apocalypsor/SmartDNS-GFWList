@@ -1,0 +1,103 @@
+{
+  "BindAddress": ":53535",
+  "DebugHTTPAddress": "127.0.0.1:5555",
+  "PrimaryDNS": [
+    {
+      "Name": "AliDNS",
+      "Address": "223.5.5.5:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    },
+    {
+      "Name": "DNSPod",
+      "Address": "119.29.29.29:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    },
+    {
+      "Name": "CNNIC",
+      "Address": "1.2.4.8:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    }
+  ],
+  "AlternativeDNS": [
+    {
+      "Name": "LUG1",
+      "Address": "202.38.93.153:5353",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    },
+    {
+      "Name": "LUG2",
+      "Address": "202.141.162.123:5353",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    },
+    {
+      "Name": "TUNA",
+      "Address": "101.6.6.6:5353",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    }
+  ],
+  "OnlyPrimaryDNS": false,
+  "IPv6UseAlternativeDNS": false,
+  "AlternativeDNSConcurrent": false,
+  "PoolIdleTimeout": 15,
+  "PoolMaxCapacity": 15,
+  "WhenPrimaryDNSAnswerNoneUse": "PrimaryDNS",
+  "IPNetworkFile": {
+    "Primary": "./ip_network_primary",
+    "Alternative": "./ip_network_alternative"
+  },
+  "DomainFile": {
+    "Primary": "./domain_primary",
+    "Alternative": "./domain_alternative",
+    "Matcher":  "full-map"
+  },
+  "HostsFile": {
+    "HostsFile": "./hosts",
+    "Finder": "full-map"
+  },
+  "MinimumTTL": 0,
+  "DomainTTLFile" : "./domain_ttl",
+  "CacheSize" : 0,
+  "RejectQType": [255]
+}
