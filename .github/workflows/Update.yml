@@ -10,7 +10,7 @@ on:
       - .github/workflows/Update.yml
   
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 */4 * * *
 
 jobs:
   Smartdns-GFWList:
