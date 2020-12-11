@@ -1,6 +1,5 @@
 {
   "BindAddress": ":53535",
-  "DebugHTTPAddress": "127.0.0.1:5555",
   "PrimaryDNS": [
     {
       "Name": "AliDNS",
@@ -80,8 +79,6 @@
   "OnlyPrimaryDNS": false,
   "IPv6UseAlternativeDNS": false,
   "AlternativeDNSConcurrent": false,
-  "PoolIdleTimeout": 15,
-  "PoolMaxCapacity": 15,
   "WhenPrimaryDNSAnswerNoneUse": "PrimaryDNS",
   "IPNetworkFile": {
     "Primary": "./ip_network_primary",
@@ -96,8 +93,8 @@
     "HostsFile": "./hosts",
     "Finder": "full-map"
   },
-  "MinimumTTL": 0,
+  "MinimumTTL": 60,
   "DomainTTLFile" : "./domain_ttl",
-  "CacheSize" : 0,
+  "CacheSize" : 4096,
   "RejectQType": [255]
 }

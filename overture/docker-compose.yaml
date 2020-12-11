@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  overture:
+    image: apocalypsor0/overture
+    container_name: overture
+    network_mode: "host"
+    # If you'd like to use your own config, mount volums as follows.
+    # NOTE: you have to create and edit these files in advance.
+    # volumes:
+    #   - ./overture/config.json:/overture/config.json
+    #   - ./overture/domain_primary:/overture/domain_primary_sample
+    #   - ./overture/domain_alternative:/overture/domain_alternative_sample
+    #   - ./overture/ip_network_primary:/overture/ip_network_primary_sample
+    #   - ./overture/ip_network_alternative:/overture/ip_network_alternative_sample
+    restart: unless-stopped
