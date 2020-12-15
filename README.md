@@ -31,7 +31,7 @@ curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/docker-co
 
 2. Modify `docker-compose.yaml`: referring to the file comment
 
-3. Run docker:
+3. Run Docker:
 ```
 docker-compose up -d
 ```
