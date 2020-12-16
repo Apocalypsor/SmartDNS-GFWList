@@ -2,7 +2,7 @@ FROM alpine
 
 ARG VERSION="Release 33"
 
-RUN wget https://apix.now.sh/github/pymumu/smartdns/%5esmartdns.*.x86_64-linux-all.tar.gz -O smartdns.tar.gz \
+RUN curl -sSL https://apix.now.sh/github/pymumu/smartdns/%5esmartdns.*.x86_64-linux-all.tar.gz -o smartdns.tar.gz \
   && tar zxvf smartdns.tar.gz \
   && mv smartdns/usr/sbin/smartdns /bin/smartdns \
   && chmod +x /bin/smartdns \
