@@ -1,6 +1,6 @@
 FROM alpine
 
-ARG VERSION="Release 33"
+ARG VERSION=Release33
 
 RUN apk --no-cache add curl
 
