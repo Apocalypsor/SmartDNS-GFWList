@@ -2,6 +2,8 @@ FROM alpine
 
 ARG VERSION="Release 33"
 
+RUN apk --no-cache add curl
+
 RUN curl -sSL https://apix.now.sh/github/pymumu/smartdns/%5esmartdns.*.x86_64-linux-all.tar.gz -o smartdns.tar.gz \
   && tar zxvf smartdns.tar.gz \
   && mv smartdns/usr/sbin/smartdns /bin/smartdns \
