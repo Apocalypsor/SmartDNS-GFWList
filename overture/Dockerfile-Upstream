@@ -10,8 +10,8 @@ RUN curl -sSL https://apix.now.sh/github/pymumu/smartdns/%5esmartdns.*.x86_64-li
   && chmod +x /bin/smartdns \
   && rm -rf smartdns*
 
-ADD smartdns-start.sh /start.sh
-ADD smartdns.conf /config.conf
+ADD overture/smartdns-start.sh /start.sh
+ADD overture/smartdns.conf /config.conf
 
 WORKDIR /
 
