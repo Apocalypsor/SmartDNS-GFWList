@@ -19,5 +19,4 @@ RUN apk add --no-cache ca-certificates \
 
 EXPOSE 53535
 
-CMD /overture/overture-linux-amd64 -c /overture/config.json
-
+CMD /overture/overture-linux-amd64 -v -c /overture/config.json
