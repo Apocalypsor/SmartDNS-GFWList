@@ -14,3 +14,7 @@ services:
     #   - ./overture/ip_network_primary:/overture/ip_network_primary_sample
     #   - ./overture/ip_network_alternative:/overture/ip_network_alternative_sample
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "128k"
