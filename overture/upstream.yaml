@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  overture:
+    image: apocalypsor0/smartdns
+    container_name: smartdns
+    network_mode: "host"
+    volumes:
+      - ./conf:/smartdns
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "128k"

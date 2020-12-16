@@ -1,0 +1,20 @@
+FROM alpine
+
+ARG VERSION="Release 33"
+
+RUN wget https://apix.now.sh/github/pymumu/smartdns/%5esmartdns.*.x86_64-linux-all.tar.gz -o smartdns.tar.gz \
+  && tar zxvf smartdns.tar.gz \
+  && mv smartdns/usr/sbin/smartdns /bin/smartdns \
+  && chmod +x /bin/smartdns \
+  && rm -rf smartdns*
+
+ADD smartdns-start.sh /start.sh
+ADD smartdns.conf /config.conf
+
+WORKDIR /
+
+VOLUME ["/smartdns"]
+
+EXPOSE 53535
+
+CMD ["/start.sh"]
