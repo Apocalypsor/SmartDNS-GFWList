@@ -31,9 +31,30 @@ curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/docker-co
 
 2. Modify `docker-compose.yaml`: referring to the file comment
 
-3. Run Docker:
+3. Run Docker (Running at `:53535` by default)
 ```
 docker-compose up -d
+```
+
+## Upstream
+1. Download `docker-compose.yaml`
+```
+curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/upstream.yaml
+```
+2. Run Docker (Running at `:53535` by default)
+```
+docker-compose up -d
+```
+
+## (Recommend) Automatically update Docker images
+```
+docker run -d \
+    --name watchtower \
+    --restart unless-stopped \
+    -e TZ=Asia/Shanghai \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower -c \
+    --schedule "0 0 2 * * *"
 ```
 
 ## Source:
