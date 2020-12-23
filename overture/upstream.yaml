@@ -2,7 +2,7 @@ version: '3'
 
 services:
   overture:
-    image: apocalypsor0/smartdns
+    image: apocalypsor0/overture:upstream
     container_name: smartdns
     network_mode: "host"
     volumes:
