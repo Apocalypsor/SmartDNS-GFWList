@@ -39,7 +39,7 @@ docker-compose up -d
 ## Upstream
 1. Download `docker-compose.yaml`
 ```
-curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/upstream.yaml
+curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/upstream.yaml > docker-compose.yaml
 ```
 2. Run Docker (Running at `:53535` by default)
 ```
