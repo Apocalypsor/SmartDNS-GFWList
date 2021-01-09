@@ -1,7 +1,7 @@
 FROM alpine
 
 LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
-ARG VERSION=v1.7-rc3
+ARG VERSION=v1.7-rc4
 ARG DOWNLOAD_URL=https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-linux-amd64.zip
 
 ENV TZ="Asia/Shanghai"
