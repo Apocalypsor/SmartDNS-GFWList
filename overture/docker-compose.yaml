@@ -2,7 +2,7 @@ version: '3'
 
 services:
   overture:
-    image: apocalypsor0/overture
+    image: ghcr.io/apocalypsor/overture:latest
     container_name: overture
     network_mode: "host"
     # If you'd like to use your own config, mount volums as follows.
