@@ -1,5 +1,6 @@
 FROM alpine
 
+ARG TARGETPLATFORM
 ARG VERSION=Release33
 
 RUN apk --no-cache add curl
