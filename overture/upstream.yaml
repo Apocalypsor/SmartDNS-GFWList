@@ -2,7 +2,7 @@ version: '3'
 
 services:
   overture:
-    image: ghcr.io/apocalypsor/overture:latest:upstream
+    image: ghcr.io/apocalypsor/overture:upstream
     container_name: smartdns
     network_mode: "host"
     volumes:
