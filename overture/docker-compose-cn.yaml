@@ -18,3 +18,8 @@ services:
       driver: "json-file"
       options:
           max-size: "128k"
+
+  redis:
+    image: redis:alpine
+    container_name: overture-redis
+    restart: unless-stopped

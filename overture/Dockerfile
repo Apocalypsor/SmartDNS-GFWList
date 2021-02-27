@@ -19,8 +19,8 @@ RUN apk add --no-cache ca-certificates \
     && mv /overture/overture-${TARGETOS}-${TARGETARCH} /overture/overture \
     && mv -f /tmp/china_ip.list /overture/ip_network_primary_sample \
     && mv -f /tmp/overture_gfw_domain.list /overture/domain_alternative_sample \
-    && mv -f /tmp/config.json /overture/config.json
+    && mv -f /tmp/config.yaml /overture/config.json
 
 EXPOSE 53535
 
-CMD /overture/overture -v -c /overture/config.json
+CMD /overture/overture -v -c /overture/config.yaml

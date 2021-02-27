@@ -1,0 +1,78 @@
+bindAddress: :53535
+primaryDNS:
+  - name: AliDNS
+    address: 223.5.5.5:53
+    protocol: udp
+    socks5Address: ''
+    timeout: 6
+    ednsClientSubnet:
+      policy: auto
+      externalIP: ''
+      noCookie: true
+  - name: DNSPod
+    address: 119.29.29.29:53
+    protocol: udp
+    socks5Address: ''
+    timeout: 6
+    ednsClientSubnet:
+      policy: auto
+      externalIP: ''
+      noCookie: true
+  - name: CNNIC
+    address: 1.2.4.8:53
+    protocol: udp
+    socks5Address: ''
+    timeout: 6
+    ednsClientSubnet:
+      policy: auto
+      externalIP: ''
+      noCookie: true
+alternativeDNS:
+  - name: LUG1
+    address: 202.38.93.153:5353
+    protocol: udp
+    socks5Address: ''
+    timeout: 6
+    ednsClientSubnet:
+      policy: auto
+      externalIP: ''
+      noCookie: true
+  - name: LUG2
+    address: 202.141.162.123:5353
+    protocol: udp
+    socks5Address: ''
+    timeout: 6
+    ednsClientSubnet:
+      policy: auto
+      externalIP: ''
+      noCookie: true
+  - name: TUNA
+    address: 101.6.6.6:5353
+    protocol: udp
+    socks5Address: ''
+    timeout: 6
+    ednsClientSubnet:
+      policy: auto
+      externalIP: ''
+      noCookie: true
+onlyPrimaryDNS: false
+ipv6UseAlternativeDNS: false
+alternativeDNSConcurrent: true
+whenPrimaryDNSAnswerNoneUse: primaryDNS
+ipNetworkFile:
+  primary: /overture/ip_network_primary_sample
+  alternative: /overture/ip_network_alternative_sample
+domainFile:
+  primary: /overture/domain_primary_sample
+  alternative: /overture/domain_alternative_sample
+  matcher: full-map
+hostsFile:
+  hostsFile: /overture/hosts_sample
+  finder: full-map
+minimumTTL: 60
+domainTTLFile: /overture/domain_ttl_sample
+cacheSize: 4096
+cacheRedisUrl: redis://redis:6379/
+cacheRedisConnectionPoolSize: 50
+rejectQType:
+  - 255
