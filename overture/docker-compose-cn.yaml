@@ -22,4 +22,6 @@ services:
   redis:
     image: redis:alpine
     container_name: overture-redis
+    ports:
+      - 127.0.0.1:56379:6379
     restart: unless-stopped
