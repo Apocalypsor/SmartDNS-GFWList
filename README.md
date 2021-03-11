@@ -16,7 +16,7 @@ conf-file /etc/smartdns/smartdns_gfw_domain.conf
 
 # Docker for [Overture](https://github.com/shawn1m/overture)
 
-GFW List and China IP List as well as overture wil; be automatically updated!
+GFW List and China IP List as well as Overture will be automatically updated!
 
 ## Usage:
 1. Download `docker-compose.yaml`
