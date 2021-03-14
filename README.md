@@ -54,7 +54,7 @@ docker run -d \
     -e TZ=Asia/Shanghai \
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower -c \
-    --schedule "0 0 2 * * *"
+    --schedule "0 0 5 * * *"
 ```
 
 ## Source:
