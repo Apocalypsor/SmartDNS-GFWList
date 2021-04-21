@@ -35,7 +35,7 @@ jobs:
         curl -sS https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed 's/ipset=\/\.//g; s/\/gfwlist//g; /^server/d' > /tmp/temp_koolshare
         curl -sS https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt > /tmp/temp_v2
         curl -sS https://raw.githubusercontent.com/Apocalypsor/Smartdns-GFWList/master/extra.conf > /tmp/temp_extra
-        cat /tmp/temp_gfwlist /tmp/temp_koolshare /tmp/temp_v2 /tmp/temp_extra | sort -u | sed 's/^\.//g' > overture/overture_gfw_domain.list
+        cat /tmp/temp_gfwlist /tmp/temp_koolshare /tmp/temp_v2 /tmp/temp_extra | sort -u | sed 's/^\.//g' > docker/overture/overture_gfw_domain.list
     - name: Push
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -54,7 +54,7 @@ jobs:
         curl -sS https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt > /tmp/china_ipv4.txt > /tmp/china_ipv4.list
         curl -sS https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt > /tmp/china_ipv6.list
         echo > /tmp/line
-        cat /tmp/china_ipv4.list /tmp/line /tmp/china_ipv6.list > overture/china_ip.list
+        cat /tmp/china_ipv4.list /tmp/line /tmp/china_ipv6.list > docker/overture/china_ip.list
     - name: Push
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -71,11 +71,11 @@ jobs:
     - name: Update Overture
       run: |
         latest_release=$(curl -s -N https://api.github.com/repos/shawn1m/overture/releases | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | head -n 1)
-        [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" overture/Dockerfile
+        [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" docker/overture/Dockerfile
     - name: Update Smartdns
       run: |
         latest_release=$(curl -s -N https://api.github.com/repos/pymumu/smartdns/releases | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | head -n 1)
-        [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" overture/Dockerfile-Upstream
+        [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" docker/smartdns/Dockerfile
     - name: Push
       uses: stefanzweifel/git-auto-commit-action@v4
       with:

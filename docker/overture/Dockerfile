@@ -1,15 +1,15 @@
 FROM --platform=$BUILDPLATFORM alpine
 
+LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
+
 ARG TARGETOS
 ARG TARGETARCH
-
-LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
 ARG VERSION=v1.7
 ARG DOWNLOAD_URL=https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-${TARGETOS}-${TARGETARCH}.zip
 
 ENV TZ="Asia/Shanghai"
 
-COPY overture/* /tmp/
+COPY docker/overture/* /tmp/
 
 RUN apk add --no-cache ca-certificates \
     && wget ${DOWNLOAD_URL} -O overture.zip \
@@ -19,7 +19,7 @@ RUN apk add --no-cache ca-certificates \
     && mv /overture/overture-${TARGETOS}-${TARGETARCH} /overture/overture \
     && mv -f /tmp/china_ip.list /overture/ip_network_primary_sample \
     && mv -f /tmp/overture_gfw_domain.list /overture/domain_alternative_sample \
-    && mv -f /tmp/config.yaml /overture/config.json
+    && mv -f /tmp/config.yaml /overture/config.yaml
 
 EXPOSE 53535
 

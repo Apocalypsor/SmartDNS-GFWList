@@ -72,7 +72,7 @@ hostsFile:
 minimumTTL: 60
 domainTTLFile: /overture/domain_ttl_sample
 cacheSize: 4096
-cacheRedisUrl: redis://127.0.0.1:56379/9
+cacheRedisUrl:
 cacheRedisConnectionPoolSize: 50
 rejectQType:
   - 255
