@@ -22,11 +22,11 @@ GFW List and China IP List as well as Overture will be automatically updated!
 1. Download `docker-compose.yaml`
 + For Chinese users:
 ```
-curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/docker-compose-cn.yaml > docker-compose.yaml
+curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/docker/docker-compose-cn.yaml > docker-compose.yaml
 ```
 + For overseas users:
 ```
-curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/docker-compose.yaml > docker-compose.yaml
+curl https://raw.githubusercontent.com/Apocalypsor/SmartDNS-GFWList/master/docker/docker-compose.yaml > docker-compose.yaml
 ```
 
 2. Modify `docker-compose.yaml`: referring to the file comment
@@ -39,7 +39,7 @@ docker-compose up -d
 ## Upstream
 1. Download `docker-compose.yaml`
 ```
-curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/overture/upstream.yaml > docker-compose.yaml
+curl https://raw.githubusercontent.com/Apocalypsor/SmartDNS-GFWList/master/docker/upstream.yaml > docker-compose.yaml
 ```
 2. Run Docker (Running at `:53535` by default)
 ```

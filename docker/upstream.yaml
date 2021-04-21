@@ -6,7 +6,7 @@ services:
     container_name: smartdns
     network_mode: "host"
     volumes:
-      - ./conf:/smartdns
+      - ./conf:/conf
     restart: unless-stopped
     logging:
       driver: "json-file"
