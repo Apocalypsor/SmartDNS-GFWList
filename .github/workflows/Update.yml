@@ -3,12 +3,6 @@ name: Update
 on:
   workflow_dispatch:
   
-  push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/Update.yml
-  
   schedule:
     - cron: 0 */4 * * *
 
