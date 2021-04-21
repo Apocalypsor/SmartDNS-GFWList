@@ -31,10 +31,14 @@ jobs:
         cp default/extra.conf /tmp/temp_extra
         cat /tmp/temp_gfwlist /tmp/temp_koolshare /tmp/temp_v2 /tmp/temp_extra | sort -u | sed 's/^\.//g' > docker/overture/overture_gfw_domain.list
     - name: Push
+      id: gfw-push
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update GFWList
         skip_dirty_check: false
+    - name: Clear Cache
+      if: steps.gfw-push.outputs.changes_detected == 'true'
+      run: curl https://purge.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf
 
   China_IP_list:
     name: China IP List
