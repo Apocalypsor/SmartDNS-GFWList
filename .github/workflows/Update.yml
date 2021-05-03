@@ -15,21 +15,7 @@ jobs:
         token: ${{ secrets.REPO_TOKEN }}
     - name: Smartdns GFWList
       run: |
-        curl -sS https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.' | sed 's#^\.\+##' | sort -u > /tmp/temp_gfwlist && sed -i 's/^/\./g' /tmp/temp_gfwlist
-        curl -sS https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed 's/ipset=\/\./\./g; s/\/gfwlist//g; /^server/d' > /tmp/temp_koolshare
-        curl -sS https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt | sed 's/^/\./g' > /tmp/temp_v2
-        cp default/extra.conf /tmp/temp_extra
-        cat /tmp/temp_gfwlist /tmp/temp_koolshare /tmp/temp_v2 /tmp/temp_extra | sort -u > /tmp/smartdns_gfw_domain.conf
-        sed -i 's/^/nameserver \//'  /tmp/smartdns_gfw_domain.conf
-        sed -i 's/$/\/GFW/'  /tmp/smartdns_gfw_domain.conf
-        cat default/gfw_group.conf /tmp/smartdns_gfw_domain.conf > smartdns_gfw_domain.conf
-    - name: Overture GFWList
-      run: |
-        curl -sS https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.' | sed 's#^\.\+##' | sort -u > /tmp/temp_gfwlist
-        curl -sS https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed 's/ipset=\/\.//g; s/\/gfwlist//g; /^server/d' > /tmp/temp_koolshare
-        curl -sS https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt > /tmp/temp_v2
-        cp default/extra.conf /tmp/temp_extra
-        cat /tmp/temp_gfwlist /tmp/temp_koolshare /tmp/temp_v2 /tmp/temp_extra | sort -u | sed 's/^\.//g' > docker/overture/overture_gfw_domain.list
+        bash default/update.sh
     - name: Push
       id: gfw-push
       uses: stefanzweifel/git-auto-commit-action@v4
@@ -39,25 +25,6 @@ jobs:
     - name: Clear Cache
       if: steps.gfw-push.outputs.changes_detected == 'true'
       run: curl https://purge.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf
-
-  China_IP_list:
-    name: China IP List
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.REPO_TOKEN }}
-    - name: Update
-      run: |
-        curl -sS https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt > /tmp/china_ipv4.txt > /tmp/china_ipv4.list
-        curl -sS https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt > /tmp/china_ipv6.list
-        echo > /tmp/line
-        cat /tmp/china_ipv4.list /tmp/line /tmp/china_ipv6.list > docker/overture/china_ip.list
-    - name: Push
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Update China IP List
-        skip_dirty_check: false
 
   Overture:
     name: Update Overture
