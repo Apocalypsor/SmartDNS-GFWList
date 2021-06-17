@@ -10,39 +10,45 @@ jobs:
   Smartdns-GFWList:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.REPO_TOKEN }}
-    - name: Smartdns GFWList
-      run: |
-        bash default/update.sh
-    - name: Push
-      id: gfw-push
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Update GFWList
-        skip_dirty_check: false
-    - name: Clear Cache
-      if: steps.gfw-push.outputs.changes_detected == 'true'
-      run: curl https://purge.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+      - name: Smartdns GFWList
+        run: |
+          bash default/update.sh
+      - name: Push
+        id: gfw-push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update GFWList
+          skip_dirty_check: false
+          commit_user_name: Action Bot
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_author: Action <actions@github.com>
+      - name: Clear Cache
+        if: steps.gfw-push.outputs.changes_detected == 'true'
+        run: curl https://purge.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf
 
   Overture:
     name: Update Overture
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.REPO_TOKEN }}
-    - name: Update Overture
-      run: |
-        latest_release=$(curl -s -N https://api.github.com/repos/shawn1m/overture/releases | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | head -n 1)
-        [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" docker/overture/Dockerfile
-    - name: Update Smartdns
-      run: |
-        latest_release=$(curl -s -N https://api.github.com/repos/pymumu/smartdns/releases | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | head -n 1)
-        [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" docker/smartdns/Dockerfile
-    - name: Push
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Update Dockerfile
-        skip_dirty_check: false
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+      - name: Update Overture
+        run: |
+          latest_release=$(curl -s -N https://api.github.com/repos/shawn1m/overture/releases | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | head -n 1)
+          [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" docker/overture/Dockerfile
+      - name: Update Smartdns
+        run: |
+          latest_release=$(curl -s -N https://api.github.com/repos/pymumu/smartdns/releases | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | head -n 1)
+          [ $latest_release ] && sed -i "s/ARG VERSION=.*/ARG VERSION=$latest_release/g" docker/smartdns/Dockerfile
+      - name: Push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Dockerfile
+          skip_dirty_check: false
+          commit_user_name: Action Bot
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_author: Action <actions@github.com>
