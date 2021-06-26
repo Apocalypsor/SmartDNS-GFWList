@@ -1,17 +1,40 @@
-name: Clean Workflow
+name: Clean Workflows
 
 on:
   workflow_dispatch:
 
   schedule:
-    - cron: '19 3 */7 * *'
+    - cron: '21 */7 * * *'
 
 jobs:
-  del_runs:
+  clean:
+    name: Clean
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
-      - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@main
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          token: ${{ secrets.REPO_TOKEN }}
-          retain_days: 1
+          repository: 'Apocalypsor/Workflows-Cleaner'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install pipenv
+        run: python -m pip install --upgrade pipenv wheel
+      - name: Cache pipenv
+        uses: actions/cache@v2
+        id: cache-pipenv
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+          restore-keys: ${{ runner.os }}-pipenv-
+      - name: Install dependencies
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: pipenv install
+      - name: Clean
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          EXPIRE_TIME: '1h'
+        run: pipenv run python run.py
