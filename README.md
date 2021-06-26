@@ -1,4 +1,5 @@
 # GFWList for Smartdns
+
 ## Usage:
 1. Download Conf: 
 ```
@@ -10,9 +11,9 @@ curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domai
 conf-file /etc/smartdns/smartdns_gfw_domain.conf
 ```
 
-## Source:
-+ gfwlist: https://github.com/gfwlist/gfwlist
-+ Koolshare: https://github.com/hq450/fancyss
+---
+
+
 
 # Docker for [Overture](https://github.com/shawn1m/overture)
 
@@ -57,5 +58,16 @@ docker run -d \
     --schedule "0 0 5 * * *"
 ```
 
+---
+
 ## Source:
-+ China IP: [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)
++ GFW List:
+   + [gfwlist](https://github.com/gfwlist/gfwlist)
+   + [Koolshare](https://github.com/hq450/fancyss)
+   + [v2ray-rules-dat](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt)
+   
++ China IP
+
+   * China IPv4: [IPIP](https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)
+
+   * China IPv6: [bgp.space](https://bgp.space/)

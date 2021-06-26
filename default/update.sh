@@ -27,7 +27,7 @@ cp -f /tmp/temp_gfwlist docker/overture/overture_gfw_domain.list
 
 # Update China List
 
-curl -sS https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt > /tmp/china_ipv4.list
-curl -sS https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china6.txt > /tmp/china_ipv6.list
+curl -sSL https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt > /tmp/china_ipv4.list
+curl -sSL https://bgp.space/china6.html | grep "^[0-9a-z:\/]*<br>" | sed "s/<br>//g" > /tmp/china_ipv6.list
 echo > /tmp/line
 cat /tmp/china_ipv4.list /tmp/line /tmp/china_ipv6.list > docker/overture/china_ip.list
