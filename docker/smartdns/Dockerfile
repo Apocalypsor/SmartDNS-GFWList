@@ -7,9 +7,7 @@ ARG VERSION=Release34
 COPY docker/smartdns/smartdns.conf /conf/
 
 RUN apk add --no-cache curl \
-    && curl -sSL https://apix.vercel.app/github/pymumu/smartdns/%5esmartdns.*.x86_64-linux-all.tar.gz -o smartdns.tar.gz \
-    && tar zxvf smartdns.tar.gz \
-    && mv smartdns/usr/sbin/smartdns /bin/smartdns \
+    && curl -sSL https://github.com/pymumu/smartdns/releases/download/$VERSION/smartdns-x86_64 -o /bin/smartdns \
     && chmod +x /bin/smartdns \
     && rm -rf smartdns* \
     && chmod 755 /conf/smartdns.conf
