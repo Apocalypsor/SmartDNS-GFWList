@@ -4,7 +4,7 @@ LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=v1.8-rc1
+ARG VERSION=v1.8
 ARG DOWNLOAD_URL=https://github.com/shawn1m/overture/releases/download/${VERSION}/overture-${TARGETOS}-${TARGETARCH}.zip
 
 ENV TZ="Asia/Shanghai"
