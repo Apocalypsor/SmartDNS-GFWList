@@ -3,7 +3,7 @@
 ## Usage:
 1. Download Conf: 
 ```
-curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf > /etc/smartdns/smartdns_gfw_domain.conf
+curl https://raw.dov.moe/Apocalypsor/Smartdns-GFWList/master/smartdns_gfw_domain.conf > /etc/smartdns/smartdns_gfw_domain.conf
 ```
 
 2. Add it to your smartdns configuration:
@@ -23,7 +23,7 @@ GFW List and China IP List as well as Overture will be automatically updated!
 1. Download `docker-compose.yaml`
 + For Chinese users:
 ```
-curl https://cdn.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/docker/docker-compose-cn.yaml > docker-compose.yaml
+curl https://raw.dov.moe/Apocalypsor/Smartdns-GFWList/master/Smartdns-GFWList/docker/docker-compose-cn.yaml > docker-compose.yaml
 ```
 + For overseas users:
 ```
