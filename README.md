@@ -23,7 +23,7 @@ GFW List and China IP List as well as Overture will be automatically updated!
 1. Download `docker-compose.yaml`
 + For Chinese users:
 ```
-curl https://raw.dov.moe/Apocalypsor/Smartdns-GFWList/master/Smartdns-GFWList/docker/docker-compose-cn.yaml > docker-compose.yaml
+curl https://raw.dov.moe/Apocalypsor/SmartDNS-GFWList/master/docker/docker-compose-cn.yaml > docker-compose.yaml
 ```
 + For overseas users:
 ```
