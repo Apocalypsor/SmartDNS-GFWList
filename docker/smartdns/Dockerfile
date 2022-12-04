@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
 
-ARG VERSION=Release38.1
+ARG VERSION=Release39
 
 COPY docker/smartdns/smartdns.conf /conf/
 
