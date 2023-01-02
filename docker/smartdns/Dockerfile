@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
 
-ARG VERSION=feature-dns-forwarding
+ARG VERSION=Release40
 
 COPY docker/smartdns/smartdns.conf /conf/
 
