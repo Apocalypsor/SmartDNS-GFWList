@@ -28,24 +28,6 @@ primaryDNS:
       externalIP: ""
       noCookie: true
 alternativeDNS:
-  - name: Fiftythree1
-    address: https://106.52.218.142/verse
-    protocol: https
-    socks5Address: ""
-    timeout: 6
-    ednsClientSubnet:
-      policy: auto
-      externalIP: ""
-      noCookie: true
-  - name: Fiftythree2
-    address: https://1.15.50.48/verse
-    protocol: https
-    socks5Address: ""
-    timeout: 6
-    ednsClientSubnet:
-      policy: auto
-      externalIP: ""
-      noCookie: true
   - name: OpenDNS
     address: https://doh.opendns.com/dns-query
     protocol: https
