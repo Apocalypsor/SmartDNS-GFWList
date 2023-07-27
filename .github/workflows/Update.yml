@@ -2,7 +2,7 @@ name: Update
 
 on:
   workflow_dispatch:
-  
+
   schedule:
     - cron: 0 */4 * * *
 
@@ -10,7 +10,7 @@ jobs:
   Smartdns-GFWList:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.REPO_TOKEN }}
       - name: Smartdns GFWList
@@ -25,15 +25,12 @@ jobs:
           commit_user_name: Action Bot
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_author: Action <actions@github.com>
-      - name: Clear Cache
-        if: steps.gfw-push.outputs.changes_detected == 'true'
-        run: curl https://purge.jsdelivr.net/gh/Apocalypsor/Smartdns-GFWList/smartdns_gfw_domain.conf
 
   Overture:
     name: Update Overture
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.REPO_TOKEN }}
       - name: Update Overture
