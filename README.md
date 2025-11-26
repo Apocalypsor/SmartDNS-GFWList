@@ -50,10 +50,10 @@ docker-compose up -d
 ```
 docker run -d \
     --name watchtower \
-    --restart unless-stopped \
+    --restart always \
     -e TZ=Asia/Shanghai \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    containrrr/watchtower -c \
+    ghcr.io/nicholas-fedor/watchtower:latest -c \
     --schedule "0 0 5 * * *"
 ```
 
