@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer="https://github.com/Apocalypsor/Smartdns-GFWList"
 
-ARG VERSION=proxy-server-0.2
+ARG VERSION=nightly
 
 COPY docker/smartdns/smartdns.conf /conf/
 
